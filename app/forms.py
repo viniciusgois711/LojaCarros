@@ -8,7 +8,7 @@ class AppForm(forms.Form):
         fields = '__all__'
 
 
-class CarrosForm(forms.Form):
+class CarrosForm(forms.ModelForm):
     class Meta:
-        model: models.Carros
+        model = models.Carros
         fields = '__all__'

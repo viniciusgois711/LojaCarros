@@ -23,5 +23,16 @@ def gerenciamento(request):
 
 
 def add_veiculo(request):
+    if request.method == 'POST':
 
-    return render(request, "pages/add_veiculo.html")
+        form_carros = forms.CarrosForm(request.POST, request.FILES)
+
+        if form_carros.is_valid():
+            form_carros.save()
+
+            return redirect(to='app:gerenciamento')
+        
+    else:
+        form_carros = forms.CarrosForm()
+
+    return render(request, "pages/add_veiculo.html", {'form_carros':form_carros})

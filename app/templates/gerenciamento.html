@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>gerenciamentoo</h1>
+{% extends "base_app.html" %}
 
-    {% for carro in carros %}
+{% block content %}
 
-    {{ carro.modelo }}
-    {{ carro.ano }}
-    {{ carro.disponivel }}
+ 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Modelo</th>
+                <th scope="col" class="text-center">Ano</th>
+                <th scope="col" class="text-center">Disponivel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carro in carros %}    
+                    <tr>
+                        <td class="text-center">{{ forloop.counter }}</td>
+                        <td class="text-center">{{ carro.modelo }}</td>
+                        <td class="text-center">{{ carro.ano }}</td>
+                        <td class="text-center">{{ carro.disponivel }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-
-    {% endfor %}
-</body>
-</html>
+{% endblock %}

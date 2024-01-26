@@ -12,11 +12,16 @@ def login(request):
             form.save()        
         return redirect('.')
 
-    return render(request, "login.html")
+    return render(request, "pages/login.html")
 
 
 def gerenciamento(request):
 
     carros_list = models.Carros.objects.all()
     
-    return render(request, "gerenciamento.html", {'carros' : carros_list})
+    return render(request, "pages/gerenciamento.html", {'carros' : carros_list})
+
+
+def add_veiculo(request):
+
+    return render(request, "pages/add_veiculo.html")

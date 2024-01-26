@@ -1,8 +1,10 @@
-{% extends "base_app.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
- 
+
+<a class="btn btn-primary" href="{% url 'app:add_veiculo' %}">add</a>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -21,6 +23,8 @@
                         <td class="text-center">{{ carro.disponivel }}</td>
                     </tr>
             {% endfor %}
+
+
         </tbody>
     </table>
 

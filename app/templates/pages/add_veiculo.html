@@ -1,38 +1,59 @@
 {% extends "base.html" %}
 
+{% load widget_tweaks %}
+
 {% block content %}
 
-{% comment %} 
+
 <form method="post" action="{% url 'app:add_veiculo' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    modelo{{ form_carros.modelo }}
+    <!-- modelo{{ form_carros.modelo }}
     ano{{ form_carros.ano }}
 
     cor{{ form_carros.cor }}
-    foto{{ form_carros.foto }}
+    foto{{ form_carros.foto }} -->
+ 
+    <div class="form-row container">
+      <div class="form-group col-md-6">
+        <label for="modelo">Modelo*</label>
+        {% render_field form_carros.modelo class+="form-control" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="marca">Marca</label>
+        {% render_field form_carros.marca class+="form-control" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="ano">Ano*</label>
+        {% render_field form_carros.ano class+="form-control" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="cor">Cor*</label>
+        {% render_field form_carros.cor class+="form-control" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Complemento">Complemento</label>
+        {% render_field form_carros.complemento class+="form-control" %}
+      </div>
+      <div class="form-group">
+        <label for="foto">Foto*</label>
+        <br>
+        {% render_field form_carros.foto type="file" class+="form-control-file" %}
+      </div>
+      <div class="form-check">
 
-    <button type="submit">Enviar</button>
-</form>  {% endcomment %}
+        {% render_field form_carros.disponivel type="checkbox" id="disponibilidade" class+="form-check-input" %}
 
-<form method="post" action="{% url 'app:add_veiculo' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label>Modelo</label>
-        <input type="text" name="modelo" class="form-control" placeholder="Modelo">
+        <label class="form-check-label" for="disponibilidade">
+          Disponivel
+        </label>
       </div>
-      <div class="form-group col-md-6">
-        <label>cor</label>
-        <input type="text" name="cor" class="form-control" placeholder="Modelo">
-      </div>
-      <div class="form-group col-md-6">
-        <label>ano</label>
-        <input type="text" name="ano" class="form-control" placeholder="Modelo">
-      </div>
-      <div class="form-group col-md-6">
-        <label>imagem</label>
-        <input type="imagem" name="imagem" class="form-control" placeholder="Modelo">
-      </div>
-    </div>      
+    </div>
 
+    <button type="submit" class="btn btn-primary">submit</button>
+
+
+
+
+
+</form>
 {% endblock %}

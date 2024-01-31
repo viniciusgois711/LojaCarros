@@ -36,3 +36,19 @@ def add_veiculo(request):
         form_carros = forms.CarrosForm()
 
     return render(request, "pages/add_veiculo.html", {'form_carros':form_carros})
+
+
+def edit_veiculo(request, id):
+
+    carro = models.Carros.objects.get(id=id)
+
+    if request.method == 'POST':
+        form_carros = forms.Carros
+
+
+def remove_veiculo(request, id):
+
+    carro = models.Carros.objects.get(id=id)
+    carro.delete()
+
+    return redirect(to='app:gerenciamento')

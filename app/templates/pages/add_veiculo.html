@@ -7,11 +7,6 @@
 
 <form method="post" action="{% url 'app:add_veiculo' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    <!-- modelo{{ form_carros.modelo }}
-    ano{{ form_carros.ano }}
-
-    cor{{ form_carros.cor }}
-    foto{{ form_carros.foto }} -->
  
     <div class="form-row container">
       <div class="form-group col-md-6">
@@ -47,9 +42,12 @@
           Disponivel
         </label>
       </div>
-    </div>
+      
+          <a class="btn btn-primary" href="{% url 'app:gerenciamento' %}">Cancelar</a>
+      
+          <button type="submit" class="btn btn-primary">Enviar</button>
 
-    <button type="submit" class="btn btn-primary">submit</button>
+    </div>      
 
 
 

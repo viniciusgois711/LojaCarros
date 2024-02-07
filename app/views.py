@@ -4,13 +4,6 @@ from . import forms
 from . import models
 
 def login(request):
-    if request.method == 'POST':
-
-        form = forms.AppForm(request.POST)
-
-        if form.is_valid():
-            form.save()        
-        return redirect('.')
 
     return render(request, "pages/login.html")
 
@@ -19,7 +12,7 @@ def gerenciamento(request):
 
     carros_list = models.Carros.objects.all()
     
-    return render(request, "pages/gerenciamento.html", {'carros' : carros_list})
+    return render(request, "pages/list_veiculo.html", {'carros' : carros_list})
 
 
 def add_veiculo(request):
@@ -39,12 +32,26 @@ def add_veiculo(request):
 
 
 def edit_veiculo(request, id):
-
-    carro = models.Carros.objects.get(id=id)
-
+    try:
+        carro = models.Carros.objects.get(id=id)
+    except models.Carros.DoesNotExist:
+        HttpResponse('Não foi possivel editar')
+    
     if request.method == 'POST':
-        form_carros = forms.Carros
+        form_carros = forms.CarrosForm(request.POST, request.FILES, instance=carro)
 
+        if form_carros.is_valid:
+            form_carros.save()
+            return redirect('app:gerenciamento')
+        else:
+            HttpResponse('Erro')
+    
+    else:
+        form_carros = forms.CarrosForm(instance=carro)        
+
+    return render(request, "pages/edit_veiculo.html", 
+                  {'form_carros':form_carros,
+                   'carro':carro})
 
 def remove_veiculo(request, id):
 

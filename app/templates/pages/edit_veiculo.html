@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<form method="post" action="{% url 'app:edit_veiculo' carro.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+ 
+    <div class="form-row container">
+      <div class="form-group col-md-6">
+        <label for="modelo">Modelo*</label>
+        {% render_field form_carros.modelo class+="form-control" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="marca">Marca</label>
+        {% render_field form_carros.marca class+="form-control" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="ano">Ano*</label>
+        {% render_field form_carros.ano class+="form-control" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="cor">Cor*</label>
+        {% render_field form_carros.cor class+="form-control" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Complemento">Complemento</label>
+        {% render_field form_carros.complemento class+="form-control" %}
+      </div>
+      <div class="form-group">
+        <label for="foto">Foto*</label>
+        <br>
+        {% render_field form_carros.foto type="file" class+="form-control-file" %}
+      </div>
+      <div class="form-check">
+
+        {% render_field form_carros.disponivel type="checkbox" id="disponibilidade" class+="form-check-input" %}
+
+        <label class="form-check-label" for="disponibilidade">
+          Disponivel
+        </label>
+      </div>
+      
+          <a class="btn btn-primary" href="{% url 'app:gerenciamento' %}">Cancelar</a>
+      
+          <button type="submit" class="btn btn-primary">Enviar</button>
+
+    </div>      
+
+
+
+
+
+</form>
+{% endblock %}

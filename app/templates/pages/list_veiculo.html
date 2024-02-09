@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<a class="btn btn-primary" href="{% url 'app:add_veiculo' %}"></a>
+<a class="btn btn-primary" href="{% url 'app:add_veiculo' %}">Novo Veículo</a>
 
 
 
@@ -23,16 +23,22 @@
                         <td class="text-center">{{ forloop.counter }}</td>
                         <td class="text-center">{{ carro.modelo }}</td>
                         <td class="text-center">{{ carro.ano }}</td>
-                        <td class="text-center">{{ carro.disponivel }}</td>
+                        
+                        {% if carro.disponivel %}
+                        <td class="text-center"><i class="bi bi-check-square-fill"></i></td>
+                        {% else %}
+                        <td class="text-center"><i class="bi bi-dash-square-fill"></i></td>
+                        {% endif %}
                         <td class="text-center">
-                            <a type="button" 
-                                class="btn btn-warning" 
-                                href="{% url 'app:remove_veiculo' carro.id %}">
-                                <i class="bi bi-trash"></i>
+                            <a type="button" class="btn btn-warning"
+                                href="{% url 'app:edit_veiculo' carro.id %}">
+                                <i class="bi bi-pencil"></i>
                             </a>
-                                <a type="button" class="btn btn-info"
-                                href="{% url 'app:edit_veiculo' carro.id %}">edit
-                                </a>
+                            <a type="button" 
+                                class="btn btn-danger" 
+                                href="{% url 'app:remove_veiculo' carro.id %}">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
                     </tr>
             {% endfor %}
 

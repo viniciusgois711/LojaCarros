@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . import forms
 from . import models
 
@@ -47,7 +47,7 @@ def edit_veiculo(request, id):
             HttpResponse('Erro')
     
     else:
-        form_carros = forms.CarrosForm(instance=carro)        
+        form_carros = forms.CarrosForm(instance=carro)      
 
     return render(request, "pages/edit_veiculo.html", 
                   {'form_carros':form_carros,
@@ -59,3 +59,9 @@ def remove_veiculo(request, id):
     carro.delete()
 
     return redirect(to='app:gerenciamento')
+
+def detalhes_veiculo(request, id):
+
+    carro = get_object_or_404(models.Carros, pk=id)
+
+    return render(request, "pages/detalhes_veiculo.html", {'carro': carro})

@@ -1,25 +1,18 @@
+<link rel="stylesheet" href="../../style/detalhes.css">
+
 {% extends "base.html" %}
 
 {% block content %}
 
-    
-    {{ carro.modelo }}
-    {{ carro.ano }}
-        <div class="card" style="width: 70rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-            <h4 class="card-title">{{ carro.modelo }}</h5>
-            <h6 class="card-text">{{ carro.marca }}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ carro.complemento }}</li>
-            <li class="list-group-item">Cor: {{ carro.cor }}</li>
-            <li class="list-group-item">{{ carro.ano }}</li>
-            </ul>
-            <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
+<h1>Detalhes do Veículo: {{carro.modelo}}</h1>
+    <ul>
+        <li><h3>Modelo: {{ carro.modelo }}</h3></li>
+        <li><h3>{{ carro.ano }}</h3></li>
+        <li><h3>{{ carro.complemento }}</h3></li>
+        <li><h3>Cor: {{ carro.cor }}</h3></li>
+        <li><h3>{{ carro.ano }}</h3></li>
+        <img src="{{ carro.foto.url }}" alt="foto">
+        
+    </ul>
 
 {% endblock %}

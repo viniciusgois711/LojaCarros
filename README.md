@@ -1,16 +1,16 @@
-Projeto para Lojas de Carros
+# Projeto para Lojas de Carros
 
-Hub para Gerenciamento de estoque para lojistas, com funções de CRUD e visualização
+### Hub para Gerenciamento de estoque para lojistas, com funções de CRUD e visualização
 
-Sobre o Projeto
+## Sobre o Projeto
 
-Desenvolvido com o intuito de auxiliar o manejamento do estoque de veículos de lojas de carro, podendo visualizar todos os carro, sendo disponíveis ou não, e ver todos os dados desse veículo. 
+### Desenvolvido com o intuito de auxiliar o manejamento do estoque de veículos de lojas de carro, podendo visualizar todos os carro, sendo disponíveis ou não, e ver todos os dados desse veículo. 
 
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 - Python
 - Django
 
-Como Usar
+## Como Usar
 - Instalar python
 - pip install django
 - pip install django-widget-tweaks
